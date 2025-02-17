@@ -10,19 +10,44 @@ import { Articulo } from '../../models/articulo';
 })
 export class AlmacenComponent {
   articulos: Articulo[] = []; // Variable para almacenar los artículos
+
+  rowsPerPage: number = 7;
+  currentPage: number = 1;
+  totalPages: number = 0;
+  paginatedArticulos: Articulo[] = [];
   
 
   constructor(private articuloService: ArticuloService) {}
 
-  ngOnInit(): void {
-    // Suscribirse al observable de artículos
-    this.articuloService.articulos$.subscribe((data) => {
-      this.articulos = data;
-    });
+  ngOnInit() {
+    this.cargarArticulos();
+  }
 
-    // Cargar los artículos si aún no se han cargado
-    if (this.articuloService.obtenerArticulos().length === 0) {
-      this.articuloService.cargarArticulos().subscribe();
+  cargarArticulos() {
+    this.articuloService.cargarArticulos().subscribe(
+      (data) => {
+        this.articulos = data;
+        this.totalPages = Math.ceil(this.articulos.length / this.rowsPerPage);
+        this.displayTable(1);
+      },
+      (error) => {
+        console.error('Error al obtener artículos', error);
+      }
+    );
+  }
+
+  displayTable(page: number): void {
+    console.log("Cambiando a página:", page);  // 🔹 Verifica en la consola si el método se ejecuta
+    const start = (page - 1) * this.rowsPerPage;
+    const end = start + this.rowsPerPage;
+    this.paginatedArticulos = this.articulos.slice(start, end);
+    console.log("Datos paginados:", this.paginatedArticulos); // 🔹 Verifica los datos
+  }
+
+  changePage(page: number): void {
+    if (page >= 1 && page <= this.totalPages) {
+      this.currentPage = page;
+      this.displayTable(page);
     }
   }
 
@@ -35,5 +60,3 @@ incrementQuantity(id:number) { }
  
   
 }
-
-

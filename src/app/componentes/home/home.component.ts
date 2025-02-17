@@ -26,7 +26,8 @@ export class HomeComponent {
   }
 
   cambiarSeccion(seccion: string) {
-    this.currentSection = seccion; // Cambia la vista actual
+    this.currentSection = seccion;
+    console.log(`Sección cambiada a: ${this.currentSection}`);
   }
 
 }

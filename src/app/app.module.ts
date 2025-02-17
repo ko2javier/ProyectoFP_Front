@@ -17,6 +17,7 @@ import { AlmacenComponent } from './componentes/almacen/almacen.component';
     LoginComponent,
     HomeComponent,
     AlmacenComponent
+    
   ],
   imports: [
     BrowserModule,

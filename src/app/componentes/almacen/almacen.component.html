@@ -13,10 +13,10 @@
           </thead>
           <tbody class="text-center table-group-divider">
             
-            <tr *ngFor="let articulo of articulos">
+            <tr *ngFor="let articulo of paginatedArticulos">
                 <td>{{ articulo.nombre }}</td>
                 <td>{{ articulo.categoria }}</td>
-                <td>{{ articulo.precio | currency }}</td>
+                <td>{{ articulo.precio }}</td>
                 
               <td class="d-flex justify-content-center align-items-center">
                 <button class="btn btn-sm boton-td-green " (click)="incrementQuantity(articulo.id)" >
@@ -50,5 +50,15 @@
             </tfoot>
     
         </table>
+        
       </div>
+      <!-- Paginación -->
+      <nav>
+        <ul class="pagination justify-content-center">
+            <li class="page-item" *ngFor="let page of [].constructor(totalPages); let i = index" [class.active]="i + 1 === currentPage">
+                <a class="page-link" (click)="changePage(i + 1)">{{ i + 1 }}</a>
+            </li>
+        </ul>
+    </nav>
+  
 </div>
