@@ -1,0 +1,50 @@
+<div class="container_login">
+    <header class="container d-flex justify-content-between align-items-center p-2">
+        <div class="logo">
+            <img src="assets/images/logo_r.png" alt="logo">
+        </div>
+        <div>
+            <h6 class="text-white">
+                <a href="#" class="text-decoration-none text-white" (click)="click_logIn()">Login</a>
+            </h6>
+        </div>
+    </header>
+
+    <!-- Texto inicial -->
+    <main class="text-center col-lg-6 col-md-12" *ngIf="isLoggedIn">
+        <h1 >הֲיִפָּלֵא מֵיהוה כָּל דָּבָר</h1>
+        <h6 class="text-white" >Gen 18:14</h6>
+    </main>
+
+    <!-- Formulario -->
+    <section class="form-container mx-auto col-lg-3 col-md-12" *ngIf="!isLoggedIn">
+        <form class="p-5"  (ngSubmit)="onLogin()">
+            <div class="form-floating mb-3 col-10 mx-auto ">
+                <input type="text" class="form-control" id="floatingUsername" placeholder="Username"  [(ngModel)]="username" 
+                name="username" 
+                required>
+                <label for="floatingUsername">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-person-fill text-primary" viewBox="0 0 16 16">
+                        <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
+                    </svg>
+                    Username
+                </label>
+            </div>
+            <div class="form-floating mb-3 col-10 mx-auto">
+                <input type="password" class="form-control" id="floatingPassword" placeholder="Password"
+                [(ngModel)]="password" name="password"  required>
+                <label for="floatingPassword">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-lock-fill text-primary" viewBox="0 0 16 16">
+                        <path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2m3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2"/>
+                    </svg>
+                    Password
+                </label>
+            </div>
+            <div class="col-10 mx-auto">
+                <button type="submit" class="btn btn-primary w-100 mx-auto">Login</button>
+            </div>
+            
+
+        </form>
+    </section>
+</div>
