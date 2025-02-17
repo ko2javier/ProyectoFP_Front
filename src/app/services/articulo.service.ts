@@ -8,7 +8,7 @@ import { Articulo } from '../models/articulo';
   providedIn: 'root'
 })
 export class ArticuloService {
-  private apiUrl = 'http://localhost:5000/articulos/all'; // URL del backend
+  private apiUrl = 'http://localhost:5000/articulos/All'; // URL del backend
 
   constructor(private http: HttpClient) {}
   

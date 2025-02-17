@@ -9,14 +9,8 @@ import { Articulo } from '../../models/articulo';
   styleUrl: './almacen.component.css'
 })
 export class AlmacenComponent {
-decrementQuantity(id:number) {
-
-}
-incrementQuantity(id:number) {
-
-}
-  almacen:boolean=false;
   articulos: Articulo[] = []; // Variable para almacenar los artículos
+  
 
   constructor(private articuloService: ArticuloService) {}
 
@@ -31,6 +25,13 @@ incrementQuantity(id:number) {
       this.articuloService.cargarArticulos().subscribe();
     }
   }
+
+/* aun sin definir los metodos de abajo*/
+decrementQuantity(id:number) { }
+incrementQuantity(id:number) { }
+
+ 
+
  
   
 }

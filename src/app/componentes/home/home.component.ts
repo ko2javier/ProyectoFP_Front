@@ -11,7 +11,9 @@ export class HomeComponent {
   /* Defino las variables de los NgIf para mostrar un componente 
   insertado o no
   */
-    almacen:boolean=true;
+  currentSection: string = 'almacen'; // Al iniciar, muestra 'almacen'
+
+   
 
   constructor(private router: Router) {}
 
@@ -21,6 +23,10 @@ export class HomeComponent {
     // Redirige al usuario a la página de login
     console.log("redirecciono a login");
     this.router.navigate(['/login']);
+  }
+
+  cambiarSeccion(seccion: string) {
+    this.currentSection = seccion; // Cambia la vista actual
   }
 
 }

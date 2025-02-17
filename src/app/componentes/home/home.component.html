@@ -7,8 +7,9 @@
             </div>
     
             <div class="col-3 d-flex justify-content-center">
-                <h4 class="text-dark">  הֲיִפָּלֵא מֵיהוה כָּל דָּבָר</h4> 
+                <h4 class="text-dark">{{ currentSection | titlecase }}</h4> 
             </div>
+            
     
             <div class=" col-3 d-flex justify-content-end">
                 <h6 class="text-white "> <button (click)="logout()" class="btn btn-link p-0 text-decoration-none">
@@ -75,65 +76,14 @@
             
       
             <!-- Tabla -->
-            <main id="main_rest" >
-                <div class="row d-flex justify-content-around align-items-center m-0 p-0">
-                  <div class="">
-                    <div class=" p-4 d-flex justify-content-center mt-5 tabla-main">
-                      <table class="table table-light table-striped table-hover table-responsive-sm  ">
-                        <thead class=" text-center ">
-                          <tr>
-                            <th scope="col-5">Name</th>
-                            <th scope="col-2">Price</th>
-                            <th scope="col-2">Stock</th>
-                            <th scope="col-4">Quantity</th>
-                    
-                          </tr>
-                        </thead>
-                        <tbody class="text-center table-group-divider">
-                          <!--boton
-                          <tr *ngFor="let product of cartItems">
-                            <td>{{ product.name }}</td>
-                            <td>{{ product.price | currency }}</td>
-                            <td>{{ product.stock }}</td>
-                            <td class="d-flex justify-content-center align-items-center">
-                              <button class="btn btn-sm boton-td-green " (click)="incrementQuantity(product.id)" >
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
-                                  <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
-                                  <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4" />
-                                </svg>
-                              </button>
-                              <span class="mx-2">{{ product.quantity }}</span>
-                              <button class="btn btn-sm boton-td-red me-2"  (click)="decrementQuantity(product.id)" >
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-dash-circle" viewBox="0 0 16 16">
-                                  <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
-                                  <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8" />
-                                </svg>
-                              </button>
-                            </td>
-                          </tr>
-                        </tbody>
-                              -->
-                        <tfoot >
-                            <tr class="table-success">
-                              <td colspan="1" class="text-center"><strong>Total:</strong></td>
-                              <!--
-                              <td colspan="1" class="text-center">{{ calculateTotal()| currency }}</td>
-                              <td colspan="1" class="text-center"></td>
-                              <td class="text-center">
-                                <button class="btn btn-danger" (click)="resetCart()">Reset</button>
-                              </td>
-                               -->
-                            </tr>
-                          </tfoot>
-                    
-                      </table>
-                    </div>
+            <main id="main_rest">
+              <div class="row d-flex justify-content-around align-items-center m-0 p-0">
+                  <div class="col">
+                      <!-- Componente Almacen -->
+                      <app-almacen *ngIf="currentSection === 'almacen'"></app-almacen>
                   </div>
-                  
-                
-                  
-                </div>
-              </main>
+              </div>
+          </main>
             
             
         </div>
