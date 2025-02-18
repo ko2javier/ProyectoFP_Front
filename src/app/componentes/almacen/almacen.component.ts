@@ -11,7 +11,7 @@ import { Articulo } from '../../models/articulo';
 export class AlmacenComponent {
   articulos: Articulo[] = []; // Variable para almacenar los artículos
 
-  rowsPerPage: number = 7;
+  rowsPerPage: number = 8;
   currentPage: number = 1;
   totalPages: number = 0;
   paginatedArticulos: Articulo[] = [];

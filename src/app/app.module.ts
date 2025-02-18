@@ -9,6 +9,7 @@ import { FormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { AlmacenComponent } from './componentes/almacen/almacen.component';
+import { VentasUsuarioComponent } from './componentes/ventas-usuario/ventas-usuario.component';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { AlmacenComponent } from './componentes/almacen/almacen.component';
     AppComponent,
     LoginComponent,
     HomeComponent,
-    AlmacenComponent
+    AlmacenComponent,
+    VentasUsuarioComponent
     
   ],
   imports: [

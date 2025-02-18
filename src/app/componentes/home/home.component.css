@@ -76,3 +76,35 @@ grid-template-columns: 1fr 3fr; gap: 0;
     border-radius: 100%;
 
 }
+
+/* Estilos base */
+.menu-item {
+    display: flex;
+    width: 100%; /* Que abarque el ancho completo */
+    background: none;
+    border: none;
+    text-align: left;
+    cursor: pointer;
+    padding: 10px 15px;
+    font-size: 16px;
+    color: #212529; /* Color del texto */
+    text-decoration: none;
+    align-items: center;
+}
+
+/* Mantener el efecto al pasar el mouse */
+.menu-item:hover {
+    background-color: #e8f5e9;
+    border-radius: 8px;
+}
+
+/* Evita el borde azul al hacer clic */
+.menu-item:focus {
+    outline: none;
+}
+
+/* Hace que el cursor se vea como en un enlace */
+.menu-item:hover,
+.menu-item:focus {
+    cursor: pointer;
+}

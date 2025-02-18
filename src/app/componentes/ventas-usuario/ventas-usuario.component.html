@@ -1,0 +1,57 @@
+<div >
+    <div class=" p-4 d-flex justify-content-center mt-5 tabla-main">
+        <table class="table table-light table-striped table-hover table-responsive-sm  ">
+          <thead class=" text-center ">
+            <tr>
+             
+                <th>Vendedor</th>
+                <th>Nombre-Producto</th>
+                <th>Cantidad</th>
+                <th>Importe</th>
+                <th>Cliente</th>
+                <th>Fecha</th>
+                <th>hora</th>
+    
+            </tr>
+          </thead>
+          <tbody class="text-center table-group-divider">
+            
+            <tr *ngFor="let articulo of paginatedArticulos">
+                <td>{{ articulo.username }}</td>
+                <td>{{ articulo.nameproducto }}</td>
+                <td>{{ articulo.cantidad }}</td>
+                <td>{{ articulo.importe }}</td>
+                <td>{{ articulo.dnicliente }}</td>
+                <td>{{ articulo.fecha }}</td>
+                <td>{{ articulo.hora }}</td>
+                
+              
+            </tr>
+          </tbody>
+        
+          <tfoot >
+              <tr class="table-success">
+               <!-- <td colspan="1" class="text-center"><strong>Total:</strong></td>
+                
+                <td colspan="1" class="text-center">{{ calculateTotal()| currency }}</td>
+                <td colspan="1" class="text-center"></td>
+                <td class="text-center">
+                  <button class="btn btn-danger" (click)="resetCart()">Reset</button>
+                </td>
+                 -->
+              </tr>
+            </tfoot>
+    
+        </table>
+        
+      </div>
+      <!-- Paginación -->
+      <nav>
+        <ul class="pagination justify-content-center">
+            <li class="page-item" *ngFor="let page of [].constructor(totalPages); let i = index" [class.active]="i + 1 === currentPage">
+                <a class="page-link" (click)="changePage(i + 1)">{{ i + 1 }}</a>
+            </li>
+        </ul>
+    </nav>
+  
+</div>
