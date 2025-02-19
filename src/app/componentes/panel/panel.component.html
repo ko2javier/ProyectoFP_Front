@@ -3,12 +3,14 @@
         <!-- 🔍 Campo de búsqueda por "Nombre Producto" -->
         <div class="col-auto">
             <label for="nombreDataList" class="form-label text-dark">Nombre</label>
-            <input class="form-control" id="nombreDataList"
-                [(ngModel)]="searchNombre" (input)="actualizarListaNombres()"
-                placeholder="Seleccione un producto"
-                list="datalistOptions1">
-
-            <datalist id="datalistOptions1" *ngIf="mostrarListaNombres">
+            <input class="form-control"
+                list="datalistOptions1"
+                [(ngModel)]="searchNombre"
+                (input)="panelVentasService.actualizarListaNombres(searchNombre)"
+                (change)="seleccionarProducto()"
+                placeholder="Type to search..."
+            >
+            <datalist id="datalistOptions1" *ngIf="panelVentasService.mostrarListaNombres">
                 <option *ngFor="let nombre of productosUnicos" [value]="nombre"></option>
             </datalist>
         </div>
@@ -16,12 +18,13 @@
         <!-- 🔍 Campo de búsqueda por "Categoría" -->
         <div class="col-auto">
             <label for="categoriaDataList" class="form-label text-dark">Categoría</label>
-            <input class="form-control" id="categoriaDataList"
-                [(ngModel)]="searchCategoria" (input)="actualizarListaCategorias()"
-                placeholder="Seleccione una categoría"
-                list="datalistOptions2">
-
-            <datalist id="datalistOptions2" *ngIf="mostrarListaCategorias">
+            <input class="form-control"
+                list="datalistOptions2"
+                [(ngModel)]="searchCategoria"
+                (input)="panelVentasService.actualizarListaCategorias(searchCategoria)"
+                placeholder="Seleccione una categoría..."
+            >
+            <datalist id="datalistOptions2" *ngIf="panelVentasService.mostrarListaCategorias">
                 <option *ngFor="let categoria of categoriasUnicas" [value]="categoria"></option>
             </datalist>
         </div>
