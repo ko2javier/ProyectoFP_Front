@@ -10,6 +10,12 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { AlmacenComponent } from './componentes/almacen/almacen.component';
 import { VentasUsuarioComponent } from './componentes/ventas-usuario/ventas-usuario.component';
+import { ComprasClienteComponent } from './componentes/compras-cliente/compras-cliente.component';
+import { PanelComponent } from './componentes/panel/panel.component';
+
+
+
+
 
 
 @NgModule({
@@ -18,14 +24,21 @@ import { VentasUsuarioComponent } from './componentes/ventas-usuario/ventas-usua
     LoginComponent,
     HomeComponent,
     AlmacenComponent,
-    VentasUsuarioComponent
+    VentasUsuarioComponent,
+    ComprasClienteComponent,
+    PanelComponent,
+    
+ 
+   
     
   ],
   imports: [
     BrowserModule,
+    
     AppRoutingModule,
     HttpClientModule,
     FormsModule, 
+  
    
   ],
   providers: [

@@ -38,7 +38,8 @@
                         </svg>
                     </button>
                     <!-- Menú Items -->
-                    <div id="asideMenu" class="collapse d-md-block">
+                    <div id="asideMenu" class="collapse d-md-block"
+                    >
                         <div class="d-flex flex-column py-4 px-3 mt-4 ">
 
                             <button (click)="cambiarSeccion('almacen')" class="menu-item mb-3">
@@ -49,13 +50,13 @@
                                 <span class="d-none d-lg-inline">Almacén</span>
                             </button>
                             
-                            <button (click)="cambiarSeccion('historial')" class="menu-item mb-3">
+                            <button (click)="cambiarSeccion('Historial Ventas')" class="menu-item mb-3">
                                 <svg version="1.1" id="_x32_" class="me-2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="25px" height="25px" viewBox="0 0 512 512" xml:space="preserve" fill="#000000">
                                     <path d="M429.75,56.692c-5.641-4-12.891-5.031-19.422-2.734l-242.875,85c-30.625-1.453-51.484-9.844-65.859-19.203 c-4.328-2.813-5.266-4.469-5.266-4.469c-2.594-2.594-3.594-6.188-2.859-9.891c0.75-3.703,3.391-6.734,6.953-7.984l217.359-76.063 c3.266-1.156,6.891-0.641,9.703,1.359c0.25,0.188,0.469,0.438,0.703,0.625l15.906-5.75c-0.984-5.453-3.938-10.391-8.547-13.641 c-5.641-4.016-12.891-5.031-19.422-2.75l-228.578,80c-8.563,3-14.297,11.094-14.297,20.156v5.578v352.312 c0,0,15.063,49,94.203,52.766l242.688-84.938c17.125-6,28.609-22.171,28.609-40.328V74.114 C438.75,67.192,435.391,60.692,429.75,56.692z">
 
                                     </path>
                                 </svg>
-                                <span class="d-none d-lg-inline">Historial </span>
+                                <span class="d-none d-lg-inline">Historial Ventas</span>
                             </button>
                             <button (click)="cambiarSeccion('panel ventas')" class="menu-item mb-3">
                               <svg fill="#000000" height="30px" width="30px" class="me-2" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" 
@@ -65,7 +66,7 @@
                                 <span class="d-none d-lg-inline">Panel Ventas</span>
                             </button>
       
-                            <button (click)="cambiarSeccion('compras cliente')" class="menu-item">
+                            <button (click)="cambiarSeccion('compras x cliente')" class="menu-item">
                                 <svg width="35px" height="35px" class="me-2" viewBox="0 0 512 512" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title>barchart</title> <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"> <g id="add" fill="#000000" transform="translate(42.666667, 85.333333)"> <path d="M21.3333333,1.42108547e-14 L85.3333333,1.42108547e-14 L85.3333333,277.333333 L21.3333333,277.333333 L21.3333333,1.42108547e-14 Z M128,128 L192,128 L192,277.333333 L128,277.333333 L128,128 Z M341.333333,85.3333333 L405.333333,85.3333333 L405.333333,277.333333 L341.333333,277.333333 L341.333333,85.3333333 Z M234.666667,42.6666667 L298.666667,42.6666667 L298.666667,277.333333 L234.666667,277.333333 L234.666667,42.6666667 Z M3.55271368e-14,298.666667 L426.666667,298.666667 L426.666667,341.333333 L3.55271368e-14,341.333333 L3.55271368e-14,298.666667 Z"
                                      id="Combined-Shape"> </path> </g> </g> </g></svg>
                                <span class="d-md-none d-lg-inline">Compras Cliente</span> 
@@ -84,8 +85,13 @@
                       <!-- Componente Almacen -->
                       <app-almacen *ngIf="currentSection === 'almacen'"></app-almacen>
                        <!-- Componente historial ventas -->
-                        <app-ventas-usuario *ngIf="currentSection === 'panel ventas'" ></app-ventas-usuario>
+                        <app-ventas-usuario *ngIf="currentSection === 'Historial Ventas'" ></app-ventas-usuario>
 
+                         <!-- Componente historial ventas -->
+                         <app-compras-cliente *ngIf="currentSection === 'compras x cliente'" ></app-compras-cliente>
+
+                        <!-- Componente historial ventas -->
+                        <app-panel *ngIf="currentSection === 'panel ventas'" ></app-panel>
 
                   </div>
                   

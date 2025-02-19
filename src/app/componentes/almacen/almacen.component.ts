@@ -37,11 +37,11 @@ export class AlmacenComponent {
   }
 
   displayTable(page: number): void {
-    console.log("Cambiando a página:", page);  // 🔹 Verifica en la consola si el método se ejecuta
+   
     const start = (page - 1) * this.rowsPerPage;
     const end = start + this.rowsPerPage;
     this.paginatedArticulos = this.articulos.slice(start, end);
-    console.log("Datos paginados:", this.paginatedArticulos); // 🔹 Verifica los datos
+    
   }
 
   changePage(page: number): void {

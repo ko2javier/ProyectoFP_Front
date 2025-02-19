@@ -11,6 +11,8 @@ import { VentaUsuario } from '../../models/VentaUsuario';
 })
 export class VentasUsuarioComponent implements OnInit {
   ventas: VentaUsuario[] = []; // Lista de ventas por usuario
+
+  // Variables del paginado
    rowsPerPage: number = 8;
     currentPage: number = 1;
     totalPages: number = 0;
@@ -25,27 +27,28 @@ export class VentasUsuarioComponent implements OnInit {
   
 
   obtenerVentas(): void {
-     // 🔹 Ahora llamamos a `cargarVentas()` para obtener TODAS las ventas
-     this.ventasService.cargarVentas().subscribe(
+    this.ventasService.cargarVentas().subscribe(
       (data) => {
-        this.ventas = data;
-        console.log("✅ Ventas obtenidas:", this.ventas); // 👀 Verificar si hay datos
-        this.totalPages = Math.ceil(this.ventas.length / this.rowsPerPage);
+        console.log("✅ Ventas obtenidas:", data); // 👀 Verificar si hay datos
+        this.totalPages = Math.ceil(data.length / this.rowsPerPage);
+        this.ventas = data; // 🔹 Asignamos los datos después del cálculo del total
         this.displayTable(1);
       },
       (error) => {
         console.error('❌ Error al obtener ventas:', error);
       }
-    ); 
+    );
   }
+  
+/**Abajo los 2 metodos que tienen que ver con el paginado */
 
-  displayTable(page: number): void {
-    console.log("Cambiando a página:", page);  // 🔹 Verifica en la consola si el método se ejecuta
-    const start = (page - 1) * this.rowsPerPage;
-    const end = start + this.rowsPerPage;
-    this.paginatedArticulos = this.ventas.slice(start, end);
-    console.log("Datos paginados:", this.paginatedArticulos); // 🔹 Verifica los datos
-  }
+displayTable(page: number): void {
+  if (!this.ventas.length) return; // 🚨 Previene errores si el array está vacío
+  const start = (page - 1) * this.rowsPerPage;
+  const end = start + this.rowsPerPage;
+  this.paginatedArticulos = this.ventas.slice(start, end);
+  console.log("📌 Página actual:", page, "Datos paginados:", this.paginatedArticulos);
+}
 
   changePage(page: number): void {
     if (page >= 1 && page <= this.totalPages) {
