@@ -6,6 +6,7 @@ import { Articulo } from '../models/articulo';
 })
 export class PanelVentasService {
   public productos: Articulo[] = [];
+  public resultadosBusqueda: Articulo[] = []; // ✅ Guarda los resultados filtrados
   public mostrarListaNombres: boolean = false;
   public mostrarListaCategorias: boolean = false;
 
@@ -35,15 +36,17 @@ export class PanelVentasService {
     this.mostrarListaCategorias = searchCategoria.length >= 2;
   }
 
-  buscarProductos(searchNombre: string, searchCategoria: string): Articulo[] {
+  buscarProductos(searchNombre: string, searchCategoria: string) {
     console.log("🔍 Buscando productos con:", searchNombre, searchCategoria);
-    return this.productos.filter(producto =>
-      (searchNombre === '' || producto.nombre === searchNombre) &&
-      (searchCategoria === '' || producto.categoria === searchCategoria)
+
+    this.resultadosBusqueda = this.productos.filter(producto =>
+      (searchNombre.trim() === '' || producto.nombre.toLowerCase().includes(searchNombre.toLowerCase())) &&
+      (searchCategoria.trim() === '' || producto.categoria.toLowerCase().includes(searchCategoria.toLowerCase()))
     );
   }
 
   limpiarBusqueda() {
     console.log("🧹 Limpiando búsqueda...");
+    this.resultadosBusqueda = [];
   }
 }

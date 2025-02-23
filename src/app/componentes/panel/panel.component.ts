@@ -14,6 +14,7 @@ export class PanelComponent implements OnInit {
   searchCategoria: string = '';
   flag_search: boolean = false;
   resultadosBusqueda: Articulo[] = []; // Almacena los productos filtrados
+  mostrarResultados: boolean = false; // ✅ Nuevo estado para activar los resultados
 
   constructor(
     private articuloService: ArticuloService,
@@ -35,20 +36,23 @@ export class PanelComponent implements OnInit {
 
   buscarProductos() {
     this.flag_search = true;
-    this.resultadosBusqueda = this.panelVentasService.buscarProductos(this.searchNombre, this.searchCategoria);
+    this.mostrarResultados = true; // ✅ Activa la vista de resultados
+    this.panelVentasService.buscarProductos(this.searchNombre, this.searchCategoria);
   }
 
   clear() {
     this.searchNombre = '';
     this.searchCategoria = '';
     this.flag_search = false;
-    
-    // 🔹 Restablecer la visibilidad de los datalist
-    this.panelVentasService.mostrarListaNombres = false;
-    this.panelVentasService.mostrarListaCategorias = false;
-  
+    this.mostrarResultados = false;  // ✅ Oculta la tabla de resultados
+
+     // 🔹 Restablecer la visibilidad de los datalist
+     this.panelVentasService.mostrarListaNombres = false;
+     this.panelVentasService.mostrarListaCategorias = false;
     this.panelVentasService.limpiarBusqueda();
-  }
+}
+
+
 
   seleccionarProducto() {
     const productoEncontrado = this.resultadosBusqueda.find(prod => prod.nombre === this.searchNombre);

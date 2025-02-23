@@ -12,6 +12,11 @@ import { AlmacenComponent } from './componentes/almacen/almacen.component';
 import { VentasUsuarioComponent } from './componentes/ventas-usuario/ventas-usuario.component';
 import { ComprasClienteComponent } from './componentes/compras-cliente/compras-cliente.component';
 import { PanelComponent } from './componentes/panel/panel.component';
+import { ResultadosBusquedaComponent } from './componentes/resultados-busqueda/resultados-busqueda.component';
+import { CarritoComponent } from './componentes/carrito/carritocomponent';
+
+
+
 
 
 
@@ -27,6 +32,10 @@ import { PanelComponent } from './componentes/panel/panel.component';
     VentasUsuarioComponent,
     ComprasClienteComponent,
     PanelComponent,
+    ResultadosBusquedaComponent,
+    CarritoComponent
+ 
+    
     
  
    
