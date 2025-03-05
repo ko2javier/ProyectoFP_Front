@@ -3,12 +3,14 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { VentaUsuario } from '../models/VentaUsuario';
+import { VentaDTO } from '../models/VentaDTO';
 
 @Injectable({
   providedIn: 'root'
 })
 export class VentasUserService {
   private apiUrl = 'http://localhost:5000/ventas/all'; // URL del backend
+  private sales_Url = 'http://localhost:5000/ventas'; // URL del backend
 
   // Almacén de datos para compartir entre componentes
   private ventasSubject = new BehaviorSubject<VentaUsuario[]>([]);
@@ -35,5 +37,13 @@ export class VentasUserService {
    */
   obtenerVentas(): Observable<VentaUsuario[]> {
     return this.ventas$;
+  }
+
+  
+  /**
+   * 🔹 Guardo la lista de ventas
+   */
+  registrarVentas(ventas: VentaDTO[]): Observable<any> {
+    return this.http.post(`${this.sales_Url}/registrar/list`, ventas);
   }
 }

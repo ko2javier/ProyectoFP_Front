@@ -34,4 +34,10 @@ export class ComprasClienteService {
   obtenerComprasPorProducto(producto: string): Observable<ComprasCliente[]> {
     return this.http.get<ComprasCliente[]>(`${this.apiUrl}/producto/${producto}`);
   }
+  
+
+  registrarComprasCliente(compras: ComprasCliente[]): Observable<ComprasCliente[]> {
+    // Llamas al endpoint: POST /api/compras-cliente/registrar/list
+    return this.http.post<ComprasCliente[]>(`${this.apiUrl}/registrar/list`, compras);
+  }
 }

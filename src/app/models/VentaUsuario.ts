@@ -8,5 +8,6 @@ export interface VentaUsuario {
     cantidad: number;       // Cantidad vendida
     importe: number;        // Importe total de la venta
     idComprasCliente?: number; // ID opcional de la compra asociada
+    codigo?:string ;
   }
   

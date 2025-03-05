@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { CarritoService } from '../../services/carrito.service';
 
 @Component({
   selector: 'app-home',
@@ -15,7 +16,7 @@ export class HomeComponent {
 
    
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private cdr: ChangeDetectorRef,  public carritoService: CarritoService) {}
 
   logout(): void {
     // Aquí puedes eliminar el token de autenticación
@@ -26,8 +27,18 @@ export class HomeComponent {
   }
 
   cambiarSeccion(seccion: string) {
+    console.log(`✅ Sección cambiada a: ${seccion}`);
+    
     this.currentSection = seccion;
-    console.log(`Sección cambiada a: ${this.currentSection}`);
+    this.cdr.detectChanges();  // 🔄 Forzar actualización de la UI
   }
+
+  debugEvent(event: any) {
+    console.log("📢 Evento recibido en HomeComponent: ", event);
+    this.cambiarSeccion(event);
+  }
+  
+
+
 
 }

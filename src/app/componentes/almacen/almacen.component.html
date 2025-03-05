@@ -6,6 +6,7 @@
              
                 <th>Nombre</th>
                 <th>Categoría</th>
+                <th>Cod_Producto</th>
                 <th>Precio</th>
                 <th>Cantidad</th>
     
@@ -16,6 +17,8 @@
             <tr *ngFor="let articulo of paginatedArticulos">
                 <td>{{ articulo.nombre }}</td>
                 <td>{{ articulo.categoria }}</td>
+                <td>{{articulo.codigo}}</td>
+
                 <td>{{ articulo.precio }}</td>
                 
               <td class="d-flex justify-content-center align-items-center">

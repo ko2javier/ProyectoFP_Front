@@ -1,7 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { PanelVentasService } from '../../services/panel-ventas.service';
 import { CarritoService } from '../../services/carrito.service';
-import { Articulo } from '../../models/articulo';
 import { CarritoItem } from '../../models/CarritoItem';
 
 @Component({
@@ -12,12 +11,13 @@ import { CarritoItem } from '../../models/CarritoItem';
 })
 export class ResultadosBusquedaComponent implements OnInit {
   @Output() volverAlPanel = new EventEmitter<void>(); // ✅ Evento para volver
+  @Output() navegarAlCarrito = new EventEmitter<string>(); // 🔹 Ahora acepta strings
 
   carrito: CarritoItem[] = []; // 🔹 Para reflejar la cantidad en la UI
 
   constructor(
     public panelVentasService: PanelVentasService,
-    private carritoService: CarritoService
+    public carritoService: CarritoService
   ) {}
 
   ngOnInit() {
@@ -39,10 +39,17 @@ export class ResultadosBusquedaComponent implements OnInit {
   }
 
   /**
-   * 📌 Incrementa la cantidad de un producto en el carrito
+   * 📌 Verifica si el producto ya ha sido añadido al carrito para cambiar el botón
    */
-  incrementarCantidad(productoId: number) {
-    this.carritoService.incrementarCantidad(productoId);
+  estaEnCarrito(productoId: number): boolean {
+    return this.carritoService.estaEnCarrito(productoId);
+  }
+
+  /**
+   * 📌 Añade un producto al carrito
+   */
+  agregarAlCarrito(productoId: number) {
+    this.carritoService.agregarAlCarrito(productoId);
   }
 
   /**
@@ -59,4 +66,9 @@ export class ResultadosBusquedaComponent implements OnInit {
     this.panelVentasService.limpiarBusqueda();
     this.volverAlPanel.emit(); // ✅ Emitimos evento para que PanelComponent oculte la tabla
   }
+  irAlCarrito() {
+    console.log("🔹 Emitiendo evento para ir al carrito...");
+    this.navegarAlCarrito.emit('carrito');
+  }
+  
 }

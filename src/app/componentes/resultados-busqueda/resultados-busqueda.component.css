@@ -48,3 +48,11 @@ td {
     
 }
 
+.button_mod {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 14px;
+    height: 48px !important; /* Ajusta si es necesario */
+    padding: 10px 20px !important;
+}

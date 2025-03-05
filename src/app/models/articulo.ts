@@ -4,5 +4,7 @@ export interface Articulo {
     categoria: string;
     precio: number;
     cantidad: number;
+    codigo: string;
+
   }
   

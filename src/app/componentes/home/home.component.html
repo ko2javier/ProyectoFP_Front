@@ -1,4 +1,4 @@
-<div class="contenedor_gral">
+<div class="contenedor_gral container-fluid">
     
 
         <header class="container d-flex justify-content-between align-items-center  header_1 p-2 sticky-top">
@@ -30,7 +30,7 @@
             <!-- Aside -->
             
                 <!-- Aside -->
-                <aside class="  w-75">..
+                <aside class="  w-75">
                     <!-- Botón Menú Hamburguesa -->
                     <button class="btn btn-light d-md-none mt-3" type="button" data-bs-toggle="collapse" data-bs-target="#asideMenu" aria-expanded="false" aria-controls="asideMenu">
                         <svg width="30" height="30" fill="currentColor" class="bi bi-list">
@@ -60,7 +60,8 @@
                             </button>
                             <button (click)="cambiarSeccion('panel ventas')" class="menu-item mb-3">
                               <svg fill="#000000" height="30px" width="30px" class="me-2" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" 
-                              xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 297 297" xml:space="preserve"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g> <path d="M51.65,104.728H245.35c3.354,0,6.083-2.728,6.083-6.082V69.988c0-3.354-2.729-6.082-6.083-6.082H51.65 c-3.354,0-6.083,2.728-6.083,6.082v28.658C45.567,102,48.296,104.728,51.65,104.728z"></path> <path d="M290.918,156.645h-25.034l8.207,20.386h16.827c3.354,0,6.082-2.728,6.082-6.082v-8.221 C297,159.374,294.272,156.645,290.918,156.645z"></path> <polygon points="83.089,156.645 74.882,177.031 222.118,177.031 213.911,156.645 "></polygon> <path d="M78.187,122.157c-1.39-2.058-3.61-3.238-6.093-3.238h-5.526c-3.016,0-5.694,1.809-6.821,4.608l-40.046,99.469 c-0.928,2.303-0.662,4.804,0.728,6.862c1.39,2.057,3.61,3.237,6.093,3.237h5.526c3.017,0,5.694-1.809,6.821-4.607l40.046-99.47 C79.842,126.714,79.577,124.214,78.187,122.157z"></path> <path d="M31.116,156.645H6.082c-3.354,0-6.082,2.729-6.082,6.083v8.221c0,3.354,2.728,6.082,6.082,6.082h16.827L31.116,156.645z"></path> <path d="M237.253,123.526c-1.127-2.798-3.805-4.607-6.821-4.607h-5.526c-2.483,0-4.703,1.18-6.093,3.238 c-1.39,2.057-1.655,4.557-0.728,6.861l40.046,99.471c1.127,2.797,3.804,4.606,6.821,4.606h5.526c2.483,0,4.703-1.18,6.093-3.237 c1.39-2.058,1.655-4.558,0.728-6.862L237.253,123.526z">
+                              xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 297 297" xml:space="preserve"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g> 
+                                <path d="M51.65,104.728H245.35c3.354,0,6.083-2.728,6.083-6.082V69.988c0-3.354-2.729-6.082-6.083-6.082H51.65 c-3.354,0-6.083,2.728-6.083,6.082v28.658C45.567,102,48.296,104.728,51.65,104.728z"></path> <path d="M290.918,156.645h-25.034l8.207,20.386h16.827c3.354,0,6.082-2.728,6.082-6.082v-8.221 C297,159.374,294.272,156.645,290.918,156.645z"></path> <polygon points="83.089,156.645 74.882,177.031 222.118,177.031 213.911,156.645 "></polygon> <path d="M78.187,122.157c-1.39-2.058-3.61-3.238-6.093-3.238h-5.526c-3.016,0-5.694,1.809-6.821,4.608l-40.046,99.469 c-0.928,2.303-0.662,4.804,0.728,6.862c1.39,2.057,3.61,3.237,6.093,3.237h5.526c3.017,0,5.694-1.809,6.821-4.607l40.046-99.47 C79.842,126.714,79.577,124.214,78.187,122.157z"></path> <path d="M31.116,156.645H6.082c-3.354,0-6.082,2.729-6.082,6.083v8.221c0,3.354,2.728,6.082,6.082,6.082h16.827L31.116,156.645z"></path> <path d="M237.253,123.526c-1.127-2.798-3.805-4.607-6.821-4.607h-5.526c-2.483,0-4.703,1.18-6.093,3.238 c-1.39,2.057-1.655,4.557-0.728,6.861l40.046,99.471c1.127,2.797,3.804,4.606,6.821,4.606h5.526c2.483,0,4.703-1.18,6.093-3.237 c1.39-2.058,1.655-4.558,0.728-6.862L237.253,123.526z">
       
                               </path> </g> </g></svg>
                                 <span class="d-none d-lg-inline">Panel Ventas</span>
@@ -72,11 +73,16 @@
                                <span class="d-md-none d-lg-inline">Compras Cliente</span> 
                             </button>
 
-                            <button (click)="cambiarSeccion('carrito')" class="menu-item">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-cart text-dark me-1" viewBox="0 0 16 16">
-                                    <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l1.313 7h8.17l1.313-7zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/>
-                                  </svg>
-                               <span class="d-md-none d-lg-inline">Carrito</span> 
+                            <button (click)="cambiarSeccion('carrito')" class="menu-item d-flex  align-items-center">
+                                <div class="d-flex flex-column align-items-center me-2 ">
+                                   
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-cart text-dark " viewBox="0 0 16 16">
+                                        <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l1.313 7h8.17l1.313-7zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/>
+                                      </svg>
+                                </div>
+                                
+                               <span class="d-md-none d-lg-inline me-4">Carrito</span> 
+                               <span *ngIf="carritoService.obtenerCantidadTotal() >0" class="badge rounded-pill text-bg-success "> {{ carritoService.obtenerCantidadTotal() }}</span>
                             </button>
                             
       
@@ -100,6 +106,15 @@
 
                         <!-- Componente historial ventas -->
                         <app-panel *ngIf="currentSection === 'panel ventas'" ></app-panel>
+
+                        <!-- Componente de Resultados de la Búsqueda -->
+                        <app-resultados-busqueda
+                        *ngIf="currentSection === 'resultados'"
+                        (volverAlPanel)="cambiarSeccion('panel-ventas')">
+                        </app-resultados-busqueda>
+                    
+                    
+                        
 
                         
                         <!-- Componente Carro Campra -->
