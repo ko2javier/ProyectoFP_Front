@@ -18,6 +18,31 @@
 
 }
 
+
+.bton_accion {
+    border: none; /* Ya lo tienes */
+    background: none; /* Elimina el fondo */
+    box-shadow: none; /* Evita sombras */
+    padding: 0; /* Elimina el relleno si lo tiene */
+}
+
+
+.bton_accion:hover, 
+.bton_accion:focus {
+    background: none !important; /* Evita el fondo en hover */
+    box-shadow: none !important; /* Evita cualquier sombra */
+    outline: none; /* Evita el contorno en focus */
+}
+
+.bton_accion svg {
+    transition: all 0.2s ease-in-out;
+}
+
+.bton_accion:hover svg {
+    
+    filter: brightness(0.5); /* Hace el icono más oscuro */
+    stroke-width: 2px; /* Engrosa el trazo si es un SVG con `stroke` */
+}
 /* Estilos de paginación */
 
 .pagination .page-item .page-link {

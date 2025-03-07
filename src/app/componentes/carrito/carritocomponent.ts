@@ -8,6 +8,8 @@ import { VentasUserService } from '../../services/ventas-user.service';
 import { ComprasCliente } from '../../models/ComprasCliente';
 import { VentaUsuario } from '../../models/VentaUsuario';
 import { ComprasClienteService } from '../../services/compras-cliente-service.service';
+import { ArticuloService } from '../../services/articulo.service';
+import { UpdateDto } from '../../models/UpdateDTO';
 
 @Component({
   selector: 'app-carrito',
@@ -25,7 +27,8 @@ identificacion: string = ""; // Almacena el valor ingresado
   carrito: CarritoItem[] = [];
 
   constructor(public carritoService: CarritoService,  private toastService: ToastService, 
-    private ventasService:VentasUserService, private comprasService:ComprasClienteService  ) {}
+    private ventasService:VentasUserService, private comprasService:ComprasClienteService ,
+    private articuloService: ArticuloService ) {}
 
   ngOnInit() {
     this.carritoService.obtenerCarrito().subscribe((productos) => {
@@ -235,6 +238,7 @@ validarItems(carrito: any[]): boolean {
     
           // 3) Directamente registras la compra usando la respuesta 
           this.registrarCompra(response);
+          this.actualizarStockBatch();
         },
         error: (err) => {
           console.error('Error al registrar ventas:', err);
@@ -280,6 +284,29 @@ validarItems(carrito: any[]): boolean {
         }
       });
     }
+
+    actualizarStockBatch(): void {
+      // Construir el array de actualizaciones a partir de los ítems del carrito con cantidad > 0
+      const updates: UpdateDto[] = this.carrito
+        .filter(item => item.cantidadCompra > 0)
+        .map(item => ({
+          codigo: item.articulo.codigo,
+          cantidadVendida: item.cantidadCompra
+        }));
+    
+      // Llamar al método del servicio que soporte actualizaciones en batch
+      this.articuloService.updateStockBatch(updates).subscribe({
+        next: (response) => {
+          console.log('Stock actualizado en batch:', response);
+          // Actualiza la UI si es necesario
+        },
+        error: (err) => {
+          console.error('Error al actualizar stock en batch:', err);
+          // Muestra el error al usuario mediante toastService, por ejemplo.
+        }
+      });
+    }
+    
 
   
 }

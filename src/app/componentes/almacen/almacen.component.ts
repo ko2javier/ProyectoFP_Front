@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ArticuloService } from '../../services/articulo.service';
 import { Articulo } from '../../models/articulo';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-almacen',
@@ -15,6 +16,8 @@ export class AlmacenComponent {
   currentPage: number = 1;
   totalPages: number = 0;
   paginatedArticulos: Articulo[] = [];
+  operation: 'insert' | 'update' | 'none' = 'none';
+  selectedArticulo = { id: 0, nombre: '', categoria: '', precio: 0, cantidad: 0, codigo: '' };
   
 
   constructor(private articuloService: ArticuloService) {}
@@ -54,6 +57,60 @@ export class AlmacenComponent {
 /* aun sin definir los metodos de abajo*/
 decrementQuantity(id:number) { }
 incrementQuantity(id:number) { }
+
+// Metodo para eliminar articulo
+
+eliminarArticulo(id: number): void {
+  Swal.fire({
+    title: '¿Estás seguro?',
+    text: 'No podrás revertir esta acción',
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#d33',
+    cancelButtonColor: '#3085d6',
+    confirmButtonText: 'Sí, eliminar',
+    cancelButtonText: 'Cancelar'
+  }).then((result) => {
+    if (result.isConfirmed) {
+      this.articuloService.deleteArticulo(id).subscribe({
+        next: () => {
+          Swal.fire('Eliminado', 'El artículo se ha eliminado', 'success');
+          this.cargarArticulos();
+        },
+        error: (err) => {
+          Swal.fire('Error', 'No se pudo eliminar el artículo', 'error');
+        }
+      });
+    }
+  });
+}
+
+
+// Metodo para cambiar a los diferentes Modos 'insert' | 'update' | 'none' = 'none'!!
+
+setMode(mode: 'none' | 'insert' | 'update', articulo?: Articulo){
+  switch(mode){
+
+    case 'update':
+      this.operation = 'update';
+      this.selectedArticulo = { ...articulo! }; // ¡Forzamos la no-null assertion!
+      
+      break;
+
+      case 'insert':
+        this.operation = 'insert';
+        break;
+
+        case 'none':
+          this.operation = 'none';
+          break;
+      
+      default:
+        this.operation = 'none';
+        break;
+    
+  }
+}
 
  
 

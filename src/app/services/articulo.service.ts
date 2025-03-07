@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { Articulo } from '../models/articulo';
+import { UpdateDto } from '../models/UpdateDTO';
 
 
 @Injectable({
@@ -9,6 +10,8 @@ import { Articulo } from '../models/articulo';
 })
 export class ArticuloService {
   private apiUrl = 'http://localhost:5000/articulos/All'; // URL del backend
+  private apiUrl2 = 'http://localhost:5000/articulos'; // URL del backend
+
 
   constructor(private http: HttpClient) {}
   
@@ -29,5 +32,22 @@ cargarArticulos(): Observable<Articulo[]> {
 obtenerArticulos(): Articulo[] {
   return this.articulosSubject.value;
 }
+
+updateStock(codigo: string, updateDto: UpdateDto): Observable<Articulo> {
+  return this.http.put<Articulo>(`${this.apiUrl}/updateStock/${codigo}`, updateDto);
+}
+
+// Para realizar un update de stock de un articulo!!
+
+updateStockBatch(updates: UpdateDto []){
+  return this.http.put<Articulo>(`${this.apiUrl2}/updateStock`, updates);
+
+}
+/**Para eliminar un articulo */
+
+deleteArticulo(id: number): Observable<void> {
+  return this.http.delete<void>(`${this.apiUrl2}/${id}`);
+}
+
 
 }
