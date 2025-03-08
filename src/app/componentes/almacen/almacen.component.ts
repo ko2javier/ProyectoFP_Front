@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { ArticuloService } from '../../services/articulo.service';
 import { Articulo } from '../../models/articulo';
 import Swal from 'sweetalert2';
+import { ToastService } from '../../services/toast.service';
+import { UpdateDto } from '../../models/UpdateDTO';
 
 @Component({
   selector: 'app-almacen',
@@ -20,7 +22,8 @@ export class AlmacenComponent {
   selectedArticulo = { id: 0, nombre: '', categoria: '', precio: 0, cantidad: 0, codigo: '' };
   
 
-  constructor(private articuloService: ArticuloService) {}
+  constructor(private articuloService: ArticuloService,
+    private toastService: ToastService ) {}
 
   ngOnInit() {
     this.cargarArticulos();
@@ -112,7 +115,53 @@ setMode(mode: 'none' | 'insert' | 'update', articulo?: Articulo){
   }
 }
 
- 
+ // Metodo para hacer el update de un numero!!
+updateArticulo() {
+  // 0- valido que hay articulo sino out
+  if (!this.selectedArticulo) return;
+
+// 1- Valido que cant y precio son números y >0 sino out !!
+
+  if (this.selectedArticulo.precio <= 0 || this.selectedArticulo.cantidad < 0) {
+        /*
+        this.toastService.showToast('ERROR', 'La cantidad y el precio deben ser números y mayores que 0',
+           false, 'danger');*/
+           this.toastService.showToast(
+            'Error', '❌ Cantidad/ Precio deben ser números y >= 0', true, 'Error' );
+        return;
+}
+
+  // 2- Construyo el objeto UpdateDto
+  const updates: UpdateDto = {
+    cantidadVendida:0,
+    codigo: this.selectedArticulo.codigo,
+    cantidad: this.selectedArticulo.cantidad,
+    precio: this.selectedArticulo.precio
+  };
+
+  // 3- Llamo al service para actualizar
+  this.articuloService.updateItem(updates).subscribe({
+    next: (articuloActualizado) => {
+      console.log('Artículo actualizado con éxito:', articuloActualizado);
+      //Con Exito reflejamos al usuario que ok
+        this.toastService.showToast('Éxito', 'Artículo actualizado', false, 'Success');
+
+      // Refresco lista de artículos:
+         this.cargarArticulos();
+
+      // Salgo del modo 'update' y clean al artículo seleccionado
+      this.selectedArticulo = { id: 0, nombre: '', categoria: '', precio: 0, cantidad: 0, codigo: '' };
+      this.operation = 'none';
+    },
+    error: (err) => {
+      console.error('Error al actualizar artículo:', err);
+      this.toastService.showToast(
+        'Error', '❌ No se pudo actualizar', true, 'Error' );
+      
+    }
+  });
+}
+
 
  
   

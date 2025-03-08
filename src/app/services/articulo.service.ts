@@ -43,7 +43,15 @@ updateStockBatch(updates: UpdateDto []){
   return this.http.put<Articulo>(`${this.apiUrl2}/updateStock`, updates);
 
 }
+/**Para cambiar valores de precio y cantd en articulo */
+
+updateItem(updates: UpdateDto ){
+  return this.http.put<Articulo>(`${this.apiUrl2}/updateItem`, updates);
+
+}
+
 /**Para eliminar un articulo */
+
 
 deleteArticulo(id: number): Observable<void> {
   return this.http.delete<void>(`${this.apiUrl2}/${id}`);
