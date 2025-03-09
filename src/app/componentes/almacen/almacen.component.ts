@@ -4,6 +4,7 @@ import { Articulo } from '../../models/articulo';
 import Swal from 'sweetalert2';
 import { ToastService } from '../../services/toast.service';
 import { UpdateDto } from '../../models/UpdateDTO';
+import { InsertDto } from '../../models/InsertDto';
 
 @Component({
   selector: 'app-almacen',
@@ -13,13 +14,16 @@ import { UpdateDto } from '../../models/UpdateDTO';
 })
 export class AlmacenComponent {
   articulos: Articulo[] = []; // Variable para almacenar los artículos
+  respuesta:Boolean=false;
 
   rowsPerPage: number = 8;
   currentPage: number = 1;
   totalPages: number = 0;
   paginatedArticulos: Articulo[] = [];
   operation: 'insert' | 'update' | 'none' = 'none';
-  selectedArticulo = { id: 0, nombre: '', categoria: '', precio: 0, cantidad: 0, codigo: '' };
+  selectedArticulo = { id: 0, nombre: '', categoria: '', precio: 0, cantidad: 0, 
+    codigo: '' };
+    insertDto: InsertDto = { nombre: '', categoria: '', precio: 0, cantidad: 0 };
   
 
   constructor(private articuloService: ArticuloService,
@@ -161,6 +165,60 @@ updateArticulo() {
     }
   });
 }
+
+// Metodo para chequear los campos de articulo!!
+chequear_art():Boolean{
+  this.respuesta=true;
+  
+  if (this.insertDto.precio <= 0 || this.insertDto.cantidad < 0) {
+    /*
+    this.toastService.showToast('ERROR', 'La cantidad y el precio deben ser números y mayores que 0',
+       false, 'danger');*/
+       this.toastService.showToast(
+        'Error', '❌ Cantidad/ Precio deben ser números y >= 0', true, 'Error' );
+        this.respuesta=false;
+    
+ } else if( this.insertDto.nombre.length<3 || this.insertDto.categoria.length<3){
+
+  this.toastService.showToast(
+    'Error', '❌  3 Caracteres en Nombre/Categoria porfa ', true, 'Error' );
+    this.respuesta=false;
+
+ }
+  
+return this.respuesta;
+
+}
+
+insertArticulo() {
+
+  if (!this.chequear_art()) {
+    return;
+  }
+    // Llamada al servicio
+    this.articuloService.insert_item(this.insertDto).subscribe({
+      next: (articuloCreado) => {
+        console.log('Artículo creado:', articuloCreado);
+        // Muestra un toast o mensaje de éxito
+        this.toastService.showToast('Éxito', 'Artículo Creado', false, 'Success');
+  
+        // Refrescar lista si deseas
+          this.cargarArticulos();
+  
+        // Reiniciar formulario
+        this.insertDto = { nombre: '',  categoria: '', precio: 0,  cantidad: 0 };
+  
+        // Volver a la vista principal
+        this.setMode('none');
+      },
+      error: (err) => {
+        console.error('Error al crear artículo:', err);
+        this.toastService.showToast(
+          'Error', '❌ No se pudo crear Articulo', true, 'Error' );
+      }
+    });
+  }
+
 
 
  

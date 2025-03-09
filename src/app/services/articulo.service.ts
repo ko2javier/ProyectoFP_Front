@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { Articulo } from '../models/articulo';
 import { UpdateDto } from '../models/UpdateDTO';
+import { InsertDto } from '../models/InsertDto';
 
 
 @Injectable({
@@ -47,6 +48,13 @@ updateStockBatch(updates: UpdateDto []){
 
 updateItem(updates: UpdateDto ){
   return this.http.put<Articulo>(`${this.apiUrl2}/updateItem`, updates);
+
+}
+
+/**Para Crear un articulo nuevo */
+
+insert_item(updates: InsertDto ){
+  return this.http.post<Articulo>(`${this.apiUrl2}/insert`, updates);
 
 }
 
