@@ -38,7 +38,7 @@
         <div class="d-flex justify-content-end mt-5">
           <!-- Puedes deshabilitar el botón si el form no es válido -->
           <button class="btn btn-success me-3" type="submit" [disabled]="insertForm.invalid">Insertar</button>
-          <button class="btn btn-secondary me-3" (click)="setMode('none')">Volver</button>
+          <button class="btn btn-secondary me-3" (click)="setMode('none')" type="button">Volver</button>
         </div>
       </form>
     </div>
@@ -121,19 +121,21 @@
                   <td>{{ articulo.precio }}</td>
                   
                 <td class="d-flex justify-content-center align-items-center">
+                  <!--
                   <button class="btn btn-sm boton-td-green "  >
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
                       <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
                       <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4" />
                     </svg>
-                  </button>
+                  </button>-->
                   {{ articulo.cantidad }}
+                  <!--
                   <button class="btn btn-sm boton-td-red me-2"   >
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-dash-circle" viewBox="0 0 16 16">
                       <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
                       <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8" />
                     </svg>
-                  </button>
+                  </button>-->
                 </td>
                 <td >
                   <div class="d-flex justify-content-center align-items-center flex-nowrap">

@@ -14,6 +14,7 @@ import { ComprasClienteComponent } from './componentes/compras-cliente/compras-c
 import { PanelComponent } from './componentes/panel/panel.component';
 import { ResultadosBusquedaComponent } from './componentes/resultados-busqueda/resultados-busqueda.component';
 import { CarritoComponent } from './componentes/carrito/carritocomponent';
+import { UsersComponent } from './componentes/users/users.component';
 
 
 
@@ -33,7 +34,8 @@ import { CarritoComponent } from './componentes/carrito/carritocomponent';
     ComprasClienteComponent,
     PanelComponent,
     ResultadosBusquedaComponent,
-    CarritoComponent
+    CarritoComponent,
+    UsersComponent
  
     
     

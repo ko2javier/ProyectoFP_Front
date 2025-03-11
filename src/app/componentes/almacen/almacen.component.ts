@@ -110,10 +110,13 @@ setMode(mode: 'none' | 'insert' | 'update', articulo?: Articulo){
 
         case 'none':
           this.operation = 'none';
+          this.insertDto = { nombre: '',  categoria: '', precio: 0,  cantidad: 0 };
+
           break;
       
       default:
         this.operation = 'none';
+        this.insertDto = { nombre: '',  categoria: '', precio: 0,  cantidad: 0 };
         break;
     
   }
