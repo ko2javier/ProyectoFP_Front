@@ -70,4 +70,14 @@
 
 
 /**/
+/**Modifico los svg*/
+.bton_accion svg {
+    transition: all 0.2s ease-in-out;
+}
+
+.bton_accion:hover svg {
+    
+    filter: brightness(0.5); /* Hace el icono más oscuro */
+    stroke-width: 2px; /* Engrosa el trazo si es un SVG con `stroke` */
+}
 

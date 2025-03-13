@@ -1,6 +1,10 @@
 import { ChangeDetectorRef, Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { CarritoService } from '../../services/carrito.service';
+import { AuthService } from '../../services/auth.service';
+import { TokenPayload } from '../../models/TokenPayload';
+import { jwtDecode } from 'jwt-decode';
+
 
 @Component({
   selector: 'app-home',
@@ -13,10 +17,22 @@ export class HomeComponent {
   insertado o no
   */
   currentSection: string = 'almacen'; // Al iniciar, muestra 'almacen'
+  userRole: string = '';
 
    
 
-  constructor(private router: Router, private cdr: ChangeDetectorRef,  public carritoService: CarritoService) {}
+  constructor(private router: Router, private cdr: ChangeDetectorRef, 
+     public carritoService: CarritoService, private authService:AuthService) {}
+
+  ngOnInit(): void {
+    const token = this.authService.getToken();
+    if (token) {
+      const decoded = jwtDecode<TokenPayload>(token);
+      this.userRole = decoded.role;
+      console.log('Rol obtenido del JWT:', this.userRole);
+    }
+  }
+  
 
   logout(): void {
     // Aquí puedes eliminar el token de autenticación
@@ -42,3 +58,7 @@ export class HomeComponent {
 
 
 }
+function jwt_decode(token: string) {
+  throw new Error('Function not implemented.');
+}
+

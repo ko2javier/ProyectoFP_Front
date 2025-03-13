@@ -4,7 +4,7 @@ export interface Usuarios {
     username: string;
     password?: string;
     enabled?: number;
-    permiso: number;
+    permiso: string;
    
 
   }

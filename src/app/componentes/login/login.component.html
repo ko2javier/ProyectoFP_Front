@@ -13,12 +13,13 @@
     <!-- Texto inicial -->
     <main class="text-center col-lg-6 col-md-12" *ngIf="isLoggedIn">
         <h1 >הֲיִפָּלֵא מֵיהוה כָּל דָּבָר</h1>
-        <h6 class="text-white" >Gen 18:14</h6>
+       <!-- <h6 class="text-white" >Gen 18:14</h6>-->
     </main>
 
     <!-- Formulario -->
-    <section class="form-container mx-auto col-lg-3 col-md-12" *ngIf="!isLoggedIn">
-        <form class="p-5"  (ngSubmit)="onLogin()">
+    <section class="form-container mx-auto col-lg-3 col-md-12 " *ngIf="!isLoggedIn">
+        <form class="p-4"  (ngSubmit)="onLogin()">
+            <h4 class="text-center mb-4">Inicio de sesión</h4>
             <div class="form-floating mb-3 col-10 mx-auto ">
                 <input type="text" class="form-control" id="floatingUsername" placeholder="Username"  [(ngModel)]="username" 
                 name="username" 
