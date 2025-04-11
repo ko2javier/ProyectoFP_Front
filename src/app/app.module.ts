@@ -20,10 +20,6 @@ import { UsersComponent } from './componentes/users/users.component';
 
 
 
-
-
-
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,10 +33,6 @@ import { UsersComponent } from './componentes/users/users.component';
     CarritoComponent,
     UsersComponent
  
-    
-    
- 
-   
     
   ],
   imports: [

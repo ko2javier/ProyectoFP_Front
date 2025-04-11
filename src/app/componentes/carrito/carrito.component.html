@@ -43,6 +43,15 @@
                         
                     </tr>
                 </tbody>
+                <tfoot>
+                  <tr>
+                    <!-- Ajusta 'colspan' según la cantidad de columnas que quieras abarcar antes del total -->
+                    <td colspan="3" class="text-end fw-bold">Total a Pagar:</td>
+                    <!-- Aquí muestras el resultado calculado -->
+                    <td class="fw-bold">{{ calcularTotal() | currency }}</td>
+                  </tr>
+                </tfoot>
+                
             </table>
         </div>
     <!-- Completar Compra !!!-->

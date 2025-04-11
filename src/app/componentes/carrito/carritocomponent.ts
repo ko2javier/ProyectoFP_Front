@@ -306,6 +306,13 @@ validarItems(carrito: any[]): boolean {
         }
       });
     }
+
+    calcularTotal(): number {
+      return this.carrito.reduce((suma, item) =>
+        suma + (item.cantidadCompra * item.articulo.precio), 0
+      );
+    }
+    
     
 
   
